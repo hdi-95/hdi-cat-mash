@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NavBarComponent } from './components/nav-bar/nav-bar';
 
 @Component({
@@ -7,4 +8,10 @@ import { NavBarComponent } from './components/nav-bar/nav-bar';
   imports: [RouterOutlet, NavBarComponent],
   templateUrl: './app.html',
 })
-export class App {}
+export class App {
+  private translate = inject(TranslateService);
+
+  constructor() {
+    this.translate.use('fr');
+  }
+}

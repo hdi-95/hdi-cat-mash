@@ -1,0 +1,9 @@
+{
+  "LOADING": "Loading...",
+  "QUESTION": "Which cat is the cutest?",
+  "CAT": "Cat",
+  "SEE_RANKING": "See the cat ranking",
+  "MATCHES_PLAYED": "matches played",
+  "LIKE": "Like",
+  "LOAD_CAT_ERROR": "Error loading cats. Please try again later."
+}
