@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApiService } from '../../services/api';
-import { FooterBtn } from '../../components/footer-btn/footer-btn';
+import { Component, inject, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { FooterBtn } from '../../components/footer-btn/footer-btn';
+import { ApiService } from '../../services/api';
 
 @Component({
   selector: 'hdi-scores',
@@ -14,11 +14,12 @@ import { TranslateModule } from '@ngx-translate/core';
 export class ScoresComponent implements OnInit {
   scores: any[] = [];
 
-  constructor(private apiService: ApiService) {}
+  private apiService = inject(ApiService);
 
   ngOnInit(): void {
     this.apiService.getScores().subscribe((data) => {
       this.scores = data;
+      console.log('Scores reçus:', this.scores);
     });
   }
 }
