@@ -3,6 +3,7 @@
   "QUESTION": "Quel chat est le plus mignon ?",
   "CAT": "Chat",
   "SEE_RANKING": "Voir le classement des chats",
+  "BACK_TO_VOTE": "Revenir au vote",
   "MATCHES_PLAYED": "matchs joués",
   "LIKE": "J'aime",
   "LOAD_CAT_ERROR": "Erreur lors du chargement des chats. Veuillez réessayer plus tard."

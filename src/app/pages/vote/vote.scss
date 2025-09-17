@@ -1,0 +1,34 @@
+.catmash-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 130px; /* Espace pour footer sticky */
+}
+
+.cat-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.cat-load-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  font-size: 1.2rem;
+  color: red;
+}
+
+.catmash-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

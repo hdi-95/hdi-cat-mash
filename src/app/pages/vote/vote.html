@@ -1,0 +1,19 @@
+<div class="catmash-container">
+
+    @if (currentPair.length === 2) {
+
+    <div class="catmash-header">
+        <h2>{{ 'QUESTION' | translate }}</h2>
+        <h1>VS</h1>
+    </div>
+
+    <hdi-cats-vs [cats]="currentPair" (newPair)="generatePair()" />
+    }
+
+    @if (loading) { <div class="cat-loading"> <hdi-loader /> </div> }
+
+    @if (loadError) { <div class="cat-load-error"> {{ 'LOAD_CAT_ERROR' | translate }} </div> }
+
+    <hdi-footer-btn [title]="'SEE_RANKING' | translate" [link]="'/scores'" />
+
+</div>

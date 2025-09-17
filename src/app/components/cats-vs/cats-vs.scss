@@ -1,0 +1,25 @@
+.cat-vs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4rem;
+  transition: flex-direction 0.3s ease;
+}
+
+.vs-divider {
+  border-left: 2px dashed #a0a9ba;
+  height: 250px;
+}
+
+@media (max-width: 600px) {
+  .cat-vs {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .vs-divider {
+    border-top: 2px dashed #a0a9ba;
+    width: 100%;
+    height: 0px;
+  }
+}
