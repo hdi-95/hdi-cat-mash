@@ -1,5 +1,5 @@
 <div class="cat-card">
     <img [src]="cat.url" class="cat-img" />
     <div class="cat-name">{{ 'CAT' | translate }} {{cat.id}}</div>
-    <button class="like-btn" (click)="vote.emit(cat.id)">{{ 'LIKE' | translate }}</button>
+    <button class="like-btn" (click)="vote.emit(cat.id)" [disabled]="voteInProgress">{{ 'LIKE' | translate }}</button>
 </div>

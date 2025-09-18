@@ -32,3 +32,8 @@
   font-size: 1rem;
   cursor: pointer;
 }
+
+.like-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

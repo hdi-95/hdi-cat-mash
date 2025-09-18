@@ -1,7 +1,7 @@
 <div class="cat-vs">
-    <hdi-cat-card [cat]="cats[0]" (vote)="vote($event)" />
+    <hdi-cat-card [cat]="cats[0]" (vote)="vote($event)" [voteInProgress]="voteInProgress" />
     <div class="vs-divider"></div>
-    <hdi-cat-card [cat]="cats[1]" (vote)="vote($event)" />
+    <hdi-cat-card [cat]="cats[1]" (vote)="vote($event)" [voteInProgress]="voteInProgress" />
 </div>
 
 @if (voteInProgress) { <div class="vote-in-progress"> <hdi-loader [loadMesg]=" 'VOTE_PROCESSING' | translate " /> </div> }

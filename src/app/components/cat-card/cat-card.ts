@@ -10,5 +10,6 @@ import { Cat } from '../../models/cat.model';
 })
 export class CatCard {
   @Input() cat!: Cat;
+  @Input() voteInProgress: boolean = false;
   @Output() vote = new EventEmitter<string>();
 }
