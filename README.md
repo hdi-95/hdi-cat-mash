@@ -1,59 +1,37 @@
 # HdiCatMash
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.0.
+Ce projet a été généré avec [Angular CLI](https://github.com/angular/angular-cli) version 20.3.0.
 
-## Development server
+## Description
 
-To start a local development server, run:
+HdiCatMash est une application Angular permettant aux utilisateurs de voter pour leurs chats préférés. Les données de vote sont stockées de manière sécurisée dans une base de données Supabase, offrant une solution cloud fiable et performante. L’application utilise Angular 20 en mode zone-less pour des performances optimisées et intègre NGX-Translate pour supporter plusieurs langues.
 
-```bash
+## Fonctionnalités principales
+
+- Vote en temps réel sur des paires de chats.
+- Visualisation des scores et classements.
+- Interface multilingue avec sélection via drapeaux 🇫🇷 / 🇬🇧.
+- Sauvegarde des votes sur Supabase.
+- Chargement optimisé avec gestion des états (loading, erreur).
+- Tests unitaires couvrant les composants critiques.
+
+## Serveur de développement
+
+Pour lancer un serveur de développement local :
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Une fois démarré, ouvre ton navigateur à l’adresse `http://localhost:4200/`. L’application se recharge automatiquement à chaque modification des sources.
 
-## Code scaffolding
+utilisé json/scores.json dans ApiService
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+## Fonctionnalités ajoutées avec plus de temps
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Ajout d'une pagination dans la grille (`hdi-cats-grid`) pour améliorer la navigation dans les listes longues.
+- Application rendue plus responsive pour une meilleure expérience sur tous les appareils (mobiles, tablettes, desktop).
+- Renforcement de la couverture des tests unitaires avec des scénarios supplémentaires pour garantir la robustesse des composants.
 
-```bash
-ng generate --help
-```
 
-## Building
 
-To build the project run:
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
