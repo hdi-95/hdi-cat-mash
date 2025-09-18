@@ -9,4 +9,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './nav-bar.html',
   styleUrls: ['./nav-bar.scss'],
 })
-export class NavBarComponent {}
+export class NavBarComponent {
+  currentLanguage = localStorage.getItem('lang') || 'fr';
+  changeLanguage(lang: string) {
+    localStorage.setItem('lang', lang);
+    window.location.reload();
+  }
+}

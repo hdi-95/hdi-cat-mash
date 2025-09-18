@@ -12,6 +12,8 @@ export class App {
   private translate = inject(TranslateService);
 
   constructor() {
-    this.translate.use('fr');
+    // Récupérer la langue depuis localStorage ou utiliser 'fr' par défaut
+    const lang = localStorage.getItem('lang') || 'fr';
+    this.translate.use(lang);
   }
 }

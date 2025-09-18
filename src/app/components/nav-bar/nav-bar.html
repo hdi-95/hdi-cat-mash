@@ -6,5 +6,28 @@
     <ul class="nav-links">
         <li><a routerLink="/vote" routerLinkActive="active">Vote</a></li>
         <li><a routerLink="/scores" routerLinkActive="active">Scores</a></li>
+
+        <span class="separator">|</span>
+
+        <div class="language-switch">
+            <button (click)="changeLanguage('fr')" [class.active]="currentLanguage === 'fr'" aria-label="Français">
+                <!-- Mini SVG drapeau France -->
+                <svg width="24" height="16" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="8" height="16" fill="#0055A4" />
+                    <rect x="8" width="8" height="16" fill="#FFFFFF" />
+                    <rect x="16" width="8" height="16" fill="#EF4135" />
+                </svg>
+            </button>
+            <button (click)="changeLanguage('en')" [class.active]="currentLanguage === 'en'" aria-label="English">
+                <!-- Mini SVG drapeau UK -->
+                <svg width="24" height="16" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="16" fill="#012169" />
+                    <path fill="#FFF" d="M0 0l24 16M24 0L0 16" stroke="#FFF" stroke-width="4" />
+                    <path fill="#C8102E" d="M0 0l24 16M24 0L0 16" stroke="#C8102E" stroke-width="2" />
+                    <rect x="10" width="4" height="16" fill="#C8102E" />
+                    <rect y="6" width="24" height="4" fill="#C8102E" />
+                </svg>
+            </button>
+        </div>
     </ul>
 </nav>
