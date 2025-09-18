@@ -1,0 +1,44 @@
+.score-podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.podium {
+  background: #24345d;
+  border-radius: 12px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  width: 270px;
+}
+.podium-left {
+  background: #42506d;
+  height: 230px;
+}
+.podium-center {
+  background: #14213d;
+  height: 250px;
+}
+.podium-right {
+  background: #42506d;
+  height: 210px;
+}
+.podium-rank {
+  font-size: 2rem;
+  margin-bottom: 0.7rem;
+  font-weight: 900;
+}
+.podium img {
+  width: 80px;
+  margin-bottom: 0.7rem;
+  border-radius: 8px;
+}
+.podium-name,
+.podium-score {
+  margin-bottom: 0.2rem;
+  font-size: 1.2rem;
+}

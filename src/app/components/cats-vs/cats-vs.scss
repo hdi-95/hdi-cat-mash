@@ -11,6 +11,20 @@
   height: 250px;
 }
 
+.vote-error {
+  color: red;
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.vote-in-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
 @media (max-width: 600px) {
   .cat-vs {
     flex-direction: column;

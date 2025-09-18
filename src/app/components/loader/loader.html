@@ -1,4 +1,6 @@
 <div class="loader">
     <img src="icons/cat.svg" width="25" height="25" />
-    <span>{{"LOADING" | translate }}</span>
+    @if (loadMesg) { <span>{{ loadMesg }}</span> }
+    @else {
+    <span>{{"LOADING" | translate }}</span>}
 </div>

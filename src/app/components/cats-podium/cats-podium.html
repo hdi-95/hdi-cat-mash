@@ -1,0 +1,24 @@
+<div class="score-podium">
+    @if (podium.length === 3) {
+    <div class="podium podium-left">
+        <div class="podium-rank">2</div>
+        <img [src]="podium[1].url" alt="Cat {{podium[1].id}}" />
+        <div class="podium-name">Chat {{podium[1].id}}</div>
+        <div class="podium-score">Score : {{podium[1].score}}pts</div>
+    </div>
+    <div class="podium podium-center">
+        <div class="podium-rank">1</div>
+        <img [src]="podium[0].url" alt="Cat {{podium[0].id}}" />
+        <div class="podium-name">Chat {{podium[0].id}}</div>
+        <div class="podium-score">Score : {{podium[0].score}}pts</div>
+    </div>
+    <div class="podium podium-right">
+        <div class="podium-rank">3</div>
+        <img [src]="podium[2].url" alt="Cat {{podium[2].id}}" />
+        <div class="podium-name">Chat {{podium[2].id}}</div>
+        <div class="podium-score">Score : {{podium[2].score}}pts</div>
+    </div>
+    } @else {
+    <p>Not enough scores yet.</p>
+    }
+</div>

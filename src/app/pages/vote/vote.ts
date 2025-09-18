@@ -26,10 +26,17 @@ export class VoteComponent {
   private destroyRef = inject(DestroyRef);
 
   ngOnInit() {
+    this.getCats();
+  }
+
+  getCats() {
+    this.loading = true;
+    this.loadError = false;
+
     this.catsService
       .getCats()
       .pipe(
-        delay(1500), // Simule un délai pour le loader
+        delay(500), // Simule un délai pour le loader
         takeUntilDestroyed(this.destroyRef),
         finalize(() => {
           this.loading = false;
@@ -38,26 +45,25 @@ export class VoteComponent {
       )
       .subscribe({
         next: (data) => {
-          console.log('Données chats reçues:', data);
+          // Données chats reçues
           this.cats = data;
           this.generatePair();
         },
         error: (err) => {
-          console.error('Erreur chargement chats:', err);
+          // Erreur chargement chats
           this.loadError = true;
         },
       });
   }
 
   generatePair() {
-    console.log("Génération d'une nouvelle paire de chats");
+    // Génère une paire aléatoire de chats
     if (this.cats.length < 2) {
       this.currentPair = [];
-      console.log('Pas assez de chats pour générer une paire.');
+      // Pas assez de chats pour générer une paire.
       return;
     }
     const shuffled = [...this.cats].sort(() => 0.5 - Math.random());
     this.currentPair = shuffled.slice(0, 2);
-    console.log('Nouvelle paire de chats générée:', this.currentPair);
   }
 }

@@ -1,0 +1,10 @@
+<div class="score-grid">
+    @for (cat of cats; track cat.id ) {
+    <div class="score-card">
+        <div class="score-rank">{{cats.indexOf(cat) + 4}}</div>
+        <img [src]="cat?.url" alt="Cat {{cat?.id}}" />
+        <div class="score-name">Chat {{cat?.id}}</div>
+        <div class="score-score">Score : {{cat.score}} pts</div>
+    </div>
+    }
+</div>

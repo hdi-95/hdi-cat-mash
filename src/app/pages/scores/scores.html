@@ -1,5 +1,20 @@
 <div class="scores-container">
-    <h2>Cat's scores word in progress</h2>
+
+    <div class="scores-header">
+        <h2>{{ 'TOP_3' | translate }}</h2>
+    </div>
+
+    @if (loading) { <div class="score-loading"> <hdi-loader /> </div> }
+
+    @if (loadError) { <div class="score-load-error"> {{ 'LOAD_SCORE_ERROR' | translate }} </div> }
+
+    @if (!loading && !loadError) {
+    <hdi-cats-podium [podium]="podium" />
+
+    <hdi-cats-grid [cats]="others" />
+    }
+
+
 
     <hdi-footer-btn [title]="'BACK_TO_VOTE' | translate" [link]="'/vote'" />
 

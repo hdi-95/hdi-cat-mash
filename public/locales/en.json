@@ -3,7 +3,12 @@
   "QUESTION": "Which cat is the cutest?",
   "CAT": "Cat",
   "SEE_RANKING": "See the cat ranking",
+  "BACK_TO_VOTE": "Back to vote",
   "MATCHES_PLAYED": "matches played",
   "LIKE": "Like",
-  "LOAD_CAT_ERROR": "Error loading cats. Please try again later."
+  "LOAD_CAT_ERROR": "Error loading cats. Please try again later.",
+  "LOAD_SCORE_ERROR": "Error loading scores. Please try again later.",
+  "VOTE_PROCESSING": "Your vote is being processed...",
+  "VOTE_ERROR": "Error saving your vote. Please try again.",
+  "TOP_3": "TOP 3"
 }

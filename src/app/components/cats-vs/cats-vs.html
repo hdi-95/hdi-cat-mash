@@ -3,3 +3,6 @@
     <div class="vs-divider"></div>
     <hdi-cat-card [cat]="cats[1]" (vote)="vote($event)" />
 </div>
+
+@if (voteInProgress) { <div class="vote-in-progress"> <hdi-loader [loadMesg]=" 'VOTE_PROCESSING' | translate " /> </div> }
+@if (voteError) { <div class="vote-error"> {{ 'VOTE_ERROR' | translate }} </div> }

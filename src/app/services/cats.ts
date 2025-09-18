@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cat } from '../models/cat.model';
 
@@ -7,9 +7,8 @@ import { Cat } from '../models/cat.model';
   providedIn: 'root',
 })
 export class CatsService {
+  private http = inject(HttpClient);
   private apiUrl = '/json/cats.json';
-
-  constructor(private http: HttpClient) {}
 
   getCats(): Observable<Cat[]> {
     return this.http.get<Cat[]>(this.apiUrl);

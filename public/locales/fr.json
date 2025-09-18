@@ -6,5 +6,9 @@
   "BACK_TO_VOTE": "Revenir au vote",
   "MATCHES_PLAYED": "matchs joués",
   "LIKE": "J'aime",
-  "LOAD_CAT_ERROR": "Erreur lors du chargement des chats. Veuillez réessayer plus tard."
+  "LOAD_CAT_ERROR": "Erreur lors du chargement des chats. Veuillez réessayer plus tard.",
+  "LOAD_SCORE_ERROR": "Erreur lors du chargement des scores. Veuillez réessayer plus tard.",
+  "VOTE_PROCESSING": "Votre vote est en cours de traitement...",
+  "VOTE_ERROR": "Erreur lors de l'enregistrement de votre vote. Veuillez réessayer.",
+  "TOP_3": "TOP 3"
 }
