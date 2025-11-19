@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
-import { catchError, combineLatest, delay, finalize } from 'rxjs';
+import { catchError, combineLatest, delay, EMPTY, finalize } from 'rxjs';
 import { CatsGrid } from '../../components/cats-grid/cats-grid';
 import { CatsPodium } from '../../components/cats-podium/cats-podium';
 import { FooterBtn } from '../../components/footer-btn/footer-btn';
@@ -44,7 +44,7 @@ export class ScoresComponent implements OnInit {
         catchError((error) => {
           console.error('Error fetching scores or cats', error);
           this.loadError = true;
-          return [];
+          return EMPTY;
         }),
         finalize(() => {
           this.loading = false;

@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, DestroyRef, inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
-import { delay, finalize } from 'rxjs';
+import { BehaviorSubject, catchError, delay, of, switchMap, tap } from 'rxjs';
 import { CatsVs } from '../../components/cats-vs/cats-vs';
 import { FooterBtn } from '../../components/footer-btn/footer-btn';
 import { Loader } from '../../components/loader/loader';
-import { Cat } from '../../models/cat.model';
 import { CatsService } from '../../services/cats';
 
 @Component({
@@ -14,56 +13,45 @@ import { CatsService } from '../../services/cats';
   standalone: true,
   imports: [CommonModule, Loader, TranslateModule, FooterBtn, CatsVs],
   templateUrl: './vote.html',
-  styleUrls: ['./vote.scss'],
+  styleUrls: ['./vote.scss']
 })
 export class VoteComponent {
-  cats: Cat[] = [];
-  currentPair: Cat[] = [];
-  loading = true;
-  loadError = false;
+
   private catsService = inject(CatsService);
-  private cdr = inject(ChangeDetectorRef);
   private destroyRef = inject(DestroyRef);
 
-  ngOnInit() {
-    this.getCats();
-  }
+  // Signals pour l'état UI
+  loading = signal(true);
+  loadError = signal(false);
 
-  getCats() {
-    this.loading = true;
-    this.loadError = false;
+  // Subject pour déclencher le rechargement
+  private refresh$ = new BehaviorSubject<void>(undefined);
 
-    this.catsService
-      .getCats()
-      .pipe(
-        delay(500), // Simule un délai pour le loader
-        takeUntilDestroyed(this.destroyRef),
-        finalize(() => {
-          this.loading = false;
-          this.cdr.detectChanges();
+  // Flux de données principal
+  currentPair = toSignal(this.refresh$.pipe(
+    tap(() => {
+      this.loading.set(true);
+      this.loadError.set(false);
+    }),
+    switchMap(() =>
+      this.catsService.getRandomPair().pipe(
+        // Petit délai artificiel pour voir le loader (optionnel, à retirer en prod si besoin)
+        delay(500),
+        tap(() => this.loading.set(false)),
+        catchError((err) => {
+          console.error('Error loading cats:', err);
+          this.loading.set(false);
+          this.loadError.set(true);
+          return of([]); // Retourne un tableau vide en cas d'erreur pour ne pas casser le flux
         })
       )
-      .subscribe({
-        next: (data) => {
-          // Données chats reçues
-          this.cats = data;
-          this.generatePair();
-        },
-        error: (err) => {
-          // Erreur chargement chats
-          this.loadError = true;
-        },
-      });
-  }
+    ),
+    takeUntilDestroyed()
+  ));
 
   generatePair() {
-    // Génère une paire aléatoire de chats
-    if (this.cats.length < 2) {
-      this.currentPair = [];
-      // Pas assez de chats pour générer une paire.
-      return;
-    }
-    const shuffled = [...this.cats].sort(() => 0.5 - Math.random());
-    this.currentPair = shuffled.slice(0, 2);
+    this.refresh$.next();
   }
+
+
 }

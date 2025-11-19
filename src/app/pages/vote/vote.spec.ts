@@ -16,7 +16,7 @@ describe('VoteComponent', () => {
 
   beforeEach(() => {
     catsServiceMockSuccess = {
-      getCats: () =>
+      getRandomPair: () =>
         of([
           { id: '1', url: 'url1', score: 0 },
           { id: '2', url: 'url2', score: 0 },
@@ -24,7 +24,7 @@ describe('VoteComponent', () => {
     };
 
     catsServiceMockError = {
-      getCats: () => throwError(() => new Error('Erreur de chargement')),
+      getRandomPair: () => throwError(() => new Error('Erreur de chargement')),
     };
   });
 
@@ -38,15 +38,18 @@ describe('VoteComponent', () => {
     const fixture = TestBed.createComponent(VoteComponent);
     const component = fixture.componentInstance;
 
-    await new Promise((r) => setTimeout(r, 600)); // attendre > 500ms simulé pour delay
-    fixture.detectChanges();
+    fixture.detectChanges(); // Trigger ngOnInit
+    await new Promise((r) => setTimeout(r, 600)); // Wait for delay
+    fixture.detectChanges(); // Update view
 
     const catsVsEl = fixture.nativeElement.querySelector('hdi-cats-vs');
     expect(catsVsEl).toBeTruthy();
-    expect(component.loadError).toBeFalse();
+    expect(component.loadError()).toBeFalse();
+    expect(component.loading()).toBeFalse();
   });
 
   it('should handle error from catsService and set loadError to true', async () => {
+    spyOn(console, 'error'); // Empêche l'erreur de s'afficher dans la console des tests
     TestBed.overrideProvider(CatsService, { useValue: catsServiceMockError });
     await TestBed.configureTestingModule({
       imports: [VoteComponent, TranslateModule.forRoot()],
@@ -55,10 +58,14 @@ describe('VoteComponent', () => {
 
     const fixture = TestBed.createComponent(VoteComponent);
     const component = fixture.componentInstance;
-    fixture.detectChanges();
-    await fixture.whenStable();
 
-    expect(component.loadError).toBeTrue();
+    fixture.detectChanges(); // Trigger ngOnInit
+    await new Promise((r) => setTimeout(r, 600)); // Wait for delay
+    fixture.detectChanges(); // Update view
+
+    expect(component.loadError()).toBeTrue();
+    expect(component.loading()).toBeFalse();
+
     const errorEl = fixture.nativeElement.querySelector('.cat-load-error');
     expect(errorEl).toBeTruthy();
     expect(errorEl.textContent).toContain('LOAD_CAT_ERROR');
