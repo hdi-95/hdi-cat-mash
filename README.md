@@ -11,7 +11,7 @@ HdiCatMash est une application Angular permettant aux utilisateurs de voter pour
 - Vote en temps réel sur des paires de chats.
 - Visualisation des scores et classements.
 - Interface multilingue avec sélection via drapeaux 🇫🇷 / 🇬🇧.
-- Sauvegarde des votes sur Supabase.
+- Sauvegarde des votes sur [Supabase](https://supabase.com/). (à réactiver en cas d'inactivité)
 - Chargement optimisé avec gestion des états (loading, erreur).
 - Tests unitaires couvrant les composants critiques.
 
